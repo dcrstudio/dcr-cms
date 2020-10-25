@@ -1,0 +1,21 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": ["error","never"],
+    "object-curly-newline": ["error", { "multiline": true }],
+    "comma-dangle": ["error", "always-multiline"],
+    "import/prefer-default-export": 0
+  }
+}

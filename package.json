@@ -1,0 +1,48 @@
+{
+  "name": "dcrcms-monorepo",
+  "description": "The Headless - Git Based Content Management System",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --parallel",
+    "clean": "lerna clean --yes",
+    "dev": "lerna run dev --scope dcrcms --stream",
+    "predev": "npm run build -- --scope dcrcms-*",
+    "lint": "eslint . --ignore-path .gitignore",
+    "start": "lerna run start --scope dcrcms --stream",
+    "prestart": "npm run build",
+    "test": "lerna run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcrstudio/dcrcms.git"
+  },
+  "keywords": [
+    "dcrcms",
+    "cms",
+    "git based cms",
+    "content management system"
+  ],
+  "author": {
+    "name": "DCR Studio",
+    "email": "dcrstudio.team@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dcrstudio/dcrcms/issues"
+  },
+  "homepage": "https://github.com/dcrstudio/dcrcms#readme",
+  "engines": {
+    "node": ">=12.14.1",
+    "npm": ">=6.13.4"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.0.0",
+    "lerna": "^3.22.1"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
