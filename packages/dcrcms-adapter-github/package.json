@@ -1,0 +1,52 @@
+{
+  "name": "dcrcms-adapter-github",
+  "version": "0.0.1",
+  "description": "GitHub adapter for DCR CMS",
+  "scripts": {
+    "build": "babel ./ -d dist --ignore node_modules",
+    "prebuild": "npm run clean",
+    "clean": "rm -rf dist/*"
+  },
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcrstudio/dcrcms.git"
+  },
+  "keywords": [
+    "dcrcms",
+    "cms",
+    "headless cms",
+    "git based cms",
+    "content management system",
+    "github",
+    "adapter",
+    "github-adapter"
+  ],
+  "author": {
+    "name": "DCR Studio",
+    "email": "dcrstudio.team@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dcrstudio/dcrcms/issues"
+  },
+  "homepage": "https://github.com/dcrstudio/dcrcms#readme",
+  "engines": {
+    "node": ">=12.14.1",
+    "npm": ">=6.13.4"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "core-js": "^3.6.5",
+    "@octokit/core": "^3.1.2",
+    "lodash.get": "^4.4.2",
+    "lodash.isnil": "^4.0.0",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "files": [
+    "dist/"
+  ]
+}
