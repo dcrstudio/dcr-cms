@@ -1,7 +1,7 @@
 {
   "name": "dcrcms-server",
-  "version": "0.0.1",
-  "description": "GraphQL server for DCR CMS",
+  "version": "0.0.2",
+  "description": "Fastify server with GraphQL for DCR CMS",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel ./ -d dist --ignore node_modules",
@@ -42,8 +42,10 @@
     "@graphql-toolkit/schema-merging": "^0.10.6",
     "core-js": "^3.6.5",
     "dcrcms-adapter-github": "0.0.1",
-    "dcrcms-schema-definition": "0.0.1",
+    "dcrcms-schema-definition": "0.0.2",
     "fastify": "^3.6.0",
+    "fastify-cookie": "^4.1.0",
+    "fastify-plugin": "^3.0.0",
     "graphql-tools": "^6.2.4",
     "mercurius": "^6.1.1",
     "regenerator-runtime": "^0.13.5"
