@@ -1,6 +1,6 @@
 {
   "name": "dcrcms-schema-definition",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Creates GraphQL schema definition for DCR CMS",
   "main": "dist/index.js",
   "scripts": {

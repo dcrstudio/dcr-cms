@@ -8,7 +8,8 @@ import {
 } from '../../helpers/path'
 
 const createDeleteResolver = (contentType) => (_, { id }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
 
   return gitAdapter.content.delete(({
     owner,
@@ -19,7 +20,8 @@ const createDeleteResolver = (contentType) => (_, { id }, context) => {
 }
 
 const createQueryContentResolver = (contentType) => async (_, input, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
 
   return gitAdapter.content.getAll({
     owner,
@@ -29,7 +31,8 @@ const createQueryContentResolver = (contentType) => async (_, input, context) =>
   })
 }
 const createQuerySingleContentResolver = (contentType) => async (_, { id }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
   const path = getContentPath(paths, contentType.id, id)
 
   const content = await gitAdapter.content.get({
@@ -46,7 +49,8 @@ const createQuerySingleContentResolver = (contentType) => async (_, { id }, cont
 }
 
 const createAddContentResolver = (contentType) => async (_, { input: content }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
   const id = uuid()
   const path = getContentPath(paths, contentType.id, id)
   const newContent = await gitAdapter.content.create({
@@ -61,7 +65,8 @@ const createAddContentResolver = (contentType) => async (_, { input: content }, 
 }
 
 const createUpdateContent = (contentType) => async (_, { input: content }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
 
   const updatedContent = await gitAdapter.content.update({
     owner,

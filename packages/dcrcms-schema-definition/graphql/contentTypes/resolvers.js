@@ -13,7 +13,8 @@ const formatFields = (fields) => {
 }
 
 const createQueryResolver = ({ multi } = {}) => async (_, { id }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
 
   if (multi) {
     return gitAdapter.contentType.getAll({
@@ -35,7 +36,8 @@ const createQueryResolver = ({ multi } = {}) => async (_, { id }, context) => {
 }
 
 const addResolver = async (_, { input }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
   const {
     id: inputId,
     fields,
@@ -60,7 +62,8 @@ const addResolver = async (_, { input }, context) => {
 }
 
 const updateResolver = async (_, { input }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
   const {
     id,
     fields,
@@ -81,7 +84,8 @@ const updateResolver = async (_, { input }, context) => {
 }
 
 const deleteResolver = (_, { id }, context) => {
-  const { gitAdapter, owner, repo, branch, paths } = context
+  const { gitAdapter, gitConfig } = context
+  const { owner, repo, branch, paths } = gitConfig
 
   return gitAdapter.contentType.delete(({
     owner,
