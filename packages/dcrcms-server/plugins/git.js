@@ -1,37 +1,21 @@
 import fastifyPlugin from 'fastify-plugin'
 import githubAdapter from 'dcrcms-adapter-github'
 
-import { buildPaths } from '../helpers'
+import { GITHUB_ADAPTER, VISIBILITY_PRIVATE } from '../constants'
 
-const GITHUB_ADAPTER = 'github'
-
+// provider methods
 // only supports GitHub at this moment
 const gitAdapters = { [GITHUB_ADAPTER]: githubAdapter }
-const defaultBranches = { [GITHUB_ADAPTER]: 'main' }
 
 const gitPlugin = async (fastify, opts, next) => {
-  const {
-    secret: ownerSecret,
-    owner,
-    repo,
-    defaultBranch,
-    visibility = 'public',
-    paths,
-    adapter = GITHUB_ADAPTER,
-  } = opts
-
-  const gitConfig = {
-    repo,
-    owner,
-    paths: buildPaths(paths),
-    defaultBranch: defaultBranch || defaultBranches[adapter],
-    adapter,
-  }
+  const { ownerSecret } = opts
+  const { adapter, owner, repo, visibility, defaultBranch, paths } = fastify.config.git
 
   const createGitAdapter = ({ secret }) => gitAdapters[adapter]({ secret })
 
   fastify.log.info(`Preparing repository: ${owner}/${repo}`)
 
+  // const gitAdapter = createGitAdapter({ secret: ownerSecret })
   const gitAdapter = createGitAdapter({ secret: ownerSecret })
 
   await gitAdapter
@@ -39,7 +23,7 @@ const gitPlugin = async (fastify, opts, next) => {
     .init({
       owner,
       name: repo,
-      isPrivate: visibility === 'private',
+      isPrivate: visibility === VISIBILITY_PRIVATE,
     })
     .then((repositoryInitialized) => {
       fastify.log.info(`Repository ready: ${repositoryInitialized}`)
@@ -51,19 +35,28 @@ const gitPlugin = async (fastify, opts, next) => {
     })
 
   const getContentTypes = () => gitAdapter.contentType.getAll({
-    owner: gitConfig.owner,
-    repo: gitConfig.repo,
-    branch: gitConfig.defaultBranch,
-    path: gitConfig.paths.contentTypes,
+    owner,
+    repo,
+    branch: defaultBranch,
+    path: paths.contentTypes,
   })
 
   await fastify.decorate('git', {
-    config: gitConfig,
     createAdapter: createGitAdapter,
     getContentTypes,
+    getOAuthLoginUrl: gitAdapter.oauth.getLoginUrl,
+    getOAuthAccessToken: gitAdapter.oauth.getAccessToken,
   })
 
   next() // end of plugin
 }
 
-export default fastifyPlugin(gitPlugin, { name: 'dcrcms-git' })
+export default fastifyPlugin(gitPlugin, {
+  name: 'dcrcms-git',
+  fastify: '3.x',
+  decorators: {
+    fastify: [
+      'config',
+    ],
+  },
+})

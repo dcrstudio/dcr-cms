@@ -1,6 +1,6 @@
 {
   "name": "dcrcms-adapter-github",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "GitHub adapter for DCR CMS",
   "scripts": {
     "build": "babel ./ -d dist --ignore node_modules",

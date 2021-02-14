@@ -3,10 +3,10 @@
   "description": "The Headless - Git Based Content Management System",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build --parallel",
+    "prebootstrap": "npm run build",
+    "build": "lerna run build --parallel --scope dcrcms-*",
     "clean": "lerna clean --yes",
-    "dev": "lerna run dev --scope dcrcms --stream",
-    "predev": "npm run build -- --scope dcrcms-*",
+    "dev": "nodemon --exec 'npm run bootstrap && lerna run dev --scope dcrcms --stream'",
     "lint": "eslint . --ignore-path .gitignore",
     "start": "lerna run start --scope dcrcms --stream",
     "prestart": "npm run build",
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
   }
 }

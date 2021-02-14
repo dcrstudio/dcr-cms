@@ -1,15 +1,27 @@
+import { Octokit } from '@octokit/core'
+
 import { DEFAULT_REPO_DESCRIPTION } from '../constants'
 
 const getAuthenticatedUser = (client) => async () => {
-  const { data: user } = await client('/user')
+  const { data: userInfo, headers } = await client('/user')
+
+  const { 'x-oauth-scopes': scope } = headers || {}
+  const { login: username, avatar_url: avatarUrl, email } = userInfo
+
+  const user = {
+    username,
+    avatarUrl,
+    email,
+    scope,
+  }
 
   return user
 }
 
 const contents = (client) => async ({ owner, repo, path }) => {
-  const { data: user } = await client.request(`/repos/${owner}/${repo}/contents/${path}`)
+  const { data } = await client.request(`/repos/${owner}/${repo}/contents/${path}`)
 
-  return user
+  return data
 }
 
 const createRepository = (client) => async ({
@@ -105,15 +117,59 @@ const updateRef = (client) => async ({
   return newRef
 }
 
-const githubRestAdapter = (client) => ({
-  getAuthenticated: getAuthenticatedUser(client),
-  contents: contents(client),
-  createBlob: createBlob(client),
-  createRepository: createRepository(client),
-  createTree: createTree(client),
-  createCommit: createCommit(client),
-  createRef: createRef(client),
-  updateRef: updateRef(client),
-})
+const getOAuthLoginUrl = () => ({ clientId, scope }) => {
+  const scopeParamString = scope && scope.length ? `&scope=${scope.join(',')}` : ''
+
+  return `https://github.com/login/oauth/authorize?client_id=${clientId}${scopeParamString}`
+}
+
+const getOAuthAccessToken = () => ({ clientId, clientSecret, query }) => {
+  const { code } = query || {}
+
+  return new Octokit().request(
+    'POST https://github.com/login/oauth/access_token',
+    {
+      client_id: clientId,
+      client_secret: clientSecret,
+      code,
+    },
+    { headers: { Accept: 'application/json' } },
+  )
+    .then(({ data }) => {
+      const { access_token: accessToken } = data || {}
+
+      return accessToken
+    })
+    // TODO: handle and format error
+}
+
+const githubRestAdapter = (client) => {
+  const methodsMap = {
+    // content
+    contents,
+    createBlob,
+    createTree,
+    createCommit,
+
+    // repo
+    createRepository,
+
+    // refs
+    createRef,
+    updateRef,
+
+    // user
+    getAuthenticatedUser,
+
+    // oatuh
+    getOAuthAccessToken,
+    getOAuthLoginUrl,
+  }
+
+  return Object.keys(methodsMap).reduce((initializedMethods, methodName) => ({
+    ...initializedMethods,
+    [methodName]: methodsMap[methodName](client),
+  }), {})
+}
 
 export default githubRestAdapter

@@ -1,0 +1,13 @@
+{
+  "delay": 2500,
+  "ext": "js,json",
+  "ignore": [
+    "packages/dcrcms/dist",
+    "packages/dcrcms-adapter-github/dist",
+    "packages/dcrcms-schema-definition/dist",
+    "packages/dcrcms-server/dist"
+  ],
+  "watch": [
+    "packages"
+  ]
+}

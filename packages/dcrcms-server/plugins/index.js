@@ -1,2 +1,5 @@
+export { default as authPlugin } from './auth'
+export { default as configPlugin } from './config'
 export { default as gitPlugin } from './git'
 export { default as graphqlPlugin } from './graphql'
+export { default as routesPlugin } from './routes'
