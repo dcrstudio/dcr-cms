@@ -1,36 +1,36 @@
 {
-  "name": "dcrcms-monorepo",
+  "name": "zaphycms-monorepo",
   "description": "The Headless - Git Based Content Management System",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "prebootstrap": "npm run build",
-    "build": "lerna run build --parallel --scope dcrcms-*",
+    "build": "lerna run build --parallel --scope zaphycms-*",
     "clean": "lerna clean --yes",
-    "dev": "nodemon --exec 'npm run bootstrap && lerna run dev --scope dcrcms --stream'",
+    "dev": "nodemon --exec 'npm run bootstrap && lerna run dev --scope zaphycms --stream'",
     "lint": "eslint . --ignore-path .gitignore",
-    "start": "lerna run start --scope dcrcms --stream",
+    "start": "lerna run start --scope zaphycms --stream",
     "prestart": "npm run build",
     "test": "lerna run test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dcrstudio/dcrcms.git"
+    "url": "git+https://github.com/zaphytech/zaphycms.git"
   },
   "keywords": [
-    "dcrcms",
+    "zaphycms",
     "cms",
     "git based cms",
     "content management system"
   ],
   "author": {
-    "name": "DCR Studio",
-    "email": "dcrstudio.team@gmail.com"
+    "name": "Zaphy Tech",
+    "email": "zaphytech@gmail.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dcrstudio/dcrcms/issues"
+    "url": "https://github.com/zaphytech/zaphycms/issues"
   },
-  "homepage": "https://github.com/dcrstudio/dcrcms#readme",
+  "homepage": "https://github.com/zaphytech/zaphycms#readme",
   "engines": {
     "node": ">=12.14.1",
     "npm": ">=6.13.4"

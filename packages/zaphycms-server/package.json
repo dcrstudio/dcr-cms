@@ -1,0 +1,57 @@
+{
+  "name": "zaphycms-server",
+  "version": "0.0.3",
+  "description": "Fastify server with GraphQL for Zaphy CMS",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel ./ -d dist --ignore node_modules",
+    "prebuild": "npm run clean",
+    "clean": "rm -rf dist/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaphytech/zaphycms.git"
+  },
+  "keywords": [
+    "zaphycms",
+    "cms",
+    "headless cms",
+    "git based cms",
+    "content management system",
+    "graphql",
+    "server"
+  ],
+  "author": {
+    "name": "Zaphy Tech",
+    "email": "zaphytech@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zaphytech/zaphycms/issues"
+  },
+  "homepage": "https://github.com/zaphytech/zaphycms#readme",
+  "engines": {
+    "node": ">=12.14.1",
+    "npm": ">=6.13.4"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "@graphql-toolkit/schema-merging": "^0.10.6",
+    "core-js": "^3.6.5",
+    "zaphycms-adapter-github": "0.0.2",
+    "zaphycms-schema-definition": "0.0.2",
+    "fastify": "^3.6.0",
+    "fastify-axios": "^1.1.3",
+    "fastify-cookie": "^4.1.0",
+    "fastify-plugin": "^3.0.0",
+    "graphql-tools": "^6.2.4",
+    "mercurius": "^6.1.1",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "files": [
+    "dist/"
+  ]
+}
