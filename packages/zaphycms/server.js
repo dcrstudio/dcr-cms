@@ -6,24 +6,24 @@ require('regenerator-runtime/runtime')
 import dotenv from 'dotenv'
 import { createServer } from 'zaphycms-server'
 
-dotenv.config()
+dotenv.config({ path: `${process.env.DOTENV_PATH || '.'}/.env` })
 
 const PORT = process.env.PORT || 3000
 
 const server = createServer({
   cookieSecret: process.env.COOKIE_SECRET,
   git: {
-    ownerSecret: process.env.GITHUB_SECRET,
-    owner: process.env.GITHUB_OWNER,
-    repo: process.env.GITHUB_REPO,
+    ownerSecret: process.env.GIT_OWNER_SECRET,
+    owner: process.env.GIT_OWNER,
+    repo: process.env.GIT_REPO,
 
-    visibility: process.env.GITHUB_REPO_VISIBILITY,
-    defaultBranch: process.env.GITHUB_DEFAULT_BRANCH,
+    visibility: process.env.GIT_REPO_VISIBILITY,
+    defaultBranch: process.env.GIT_DEFAULT_BRANCH,
   },
   logger: true,
-  oauthClientId: process.env.GITHUB_OAUTH_CLIENT_ID,
-  oauthClientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
-  oauthScope: process.env.GITHUB_OAUTH_SCOPE.split(','),
+  oauthClientId: process.env.GIT_OAUTH_CLIENT_ID,
+  oauthClientSecret: process.env.GIT_OAUTH_CLIENT_SECRET,
+  oauthScope: process.env.GIT_OAUTH_SCOPE?.split(','),
   playground: process.env.GRAPHQL_PLAYGROUND,
 })
 

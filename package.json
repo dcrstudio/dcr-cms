@@ -6,9 +6,9 @@
     "prebootstrap": "npm run build",
     "build": "lerna run build --parallel --scope zaphycms-*",
     "clean": "lerna clean --yes",
-    "dev": "nodemon --exec 'npm run bootstrap && lerna run dev --scope zaphycms --stream'",
+    "dev": "DOTENV_PATH=$PWD nodemon --exec 'npm run bootstrap && lerna run dev --scope zaphycms --stream'",
     "lint": "eslint . --ignore-path .gitignore",
-    "start": "lerna run start --scope zaphycms --stream",
+    "start": "DOTENV_PATH=$PWD lerna run start --scope zaphycms --stream",
     "prestart": "npm run build",
     "test": "lerna run test"
   },
