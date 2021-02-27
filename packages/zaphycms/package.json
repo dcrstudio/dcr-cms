@@ -39,12 +39,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "zaphycms-server": "0.0.3",
     "dotenv": "^8.2.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.get": "^4.4.2",
     "lodash.startcase": "^4.4.0",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "zaphycms-server": "0.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

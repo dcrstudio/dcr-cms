@@ -14,7 +14,7 @@ import pascalCase from '../../helpers/pascalCase'
 
 const getSysTypeDefs = (contentGraphQLTypes) => `
 enum ${SYS_CONTENT_TYPE_ENUM} {
-${contentGraphQLTypes.join(',\n')}
+${contentGraphQLTypes?.join(',\n')}
 }
 
 # extend enum ${CONTENT_TYPE_FIELD_TYPE_ENUM} {
@@ -67,10 +67,10 @@ const getFieldType = ({
 }
 
 const createContentFields = (
-  fields,
+  fields = [],
   { isCreate = false, isInput = false, contentGraphQLTypes } = {},
 ) => (
-  fields.map(({
+  fields?.map(({
     id: fieldName,
     type: fieldType,
     isRequired,
@@ -97,16 +97,17 @@ export const createContentTypeDefs = ({
   content: [
     `type ${graphqlType} implements ${CONTENT_INTERFACE} {
         ${CONTENT_ID_FIELD_NAME}: ${CONTENT_ID_FIELD_TYPE}
-        ${createContentFields(fields, { contentGraphQLTypes }).join('\n')}
+        ${createContentFields(fields, { contentGraphQLTypes })?.join('\n')}
+        
         sys: ${SYS_CONTENT_TYPE}
       }`,
     `input ${graphqlType}Input {
         # ${CONTENT_ID_FIELD_NAME}: ${CONTENT_ID_FIELD_TYPE}!
-        ${createContentFields(fields, { isCreate: true, isInput: true, contentGraphQLTypes }).join('\n')}
+        ${createContentFields(fields, { isCreate: true, isInput: true, contentGraphQLTypes })?.join('\n')}
       }`,
     `input ${graphqlType}UpdateInput{
         ${CONTENT_ID_FIELD_NAME}: ${CONTENT_ID_FIELD_TYPE}!
-        ${createContentFields(fields, { isInput: true, contentGraphQLTypes }).join('\n')}
+        ${createContentFields(fields, { isInput: true, contentGraphQLTypes })?.join('\n')}
       }`,
   ],
   queries: [
@@ -129,14 +130,14 @@ export const createTypeDefs = ({
   const typeDefs = `
   ${getSysTypeDefs(contentGraphQLTypes)}
 
-  ${contentTypes.join('\n\n')}
+  ${contentTypes?.join('\n\n')}
 
   type Query {
-    ${queries.join('\n')}
+    ${queries?.join('\n')}
   }
 
   type Mutation {
-    ${mutations.join('\n')}
+    ${mutations?.join('\n')}
   }
   `
 

@@ -1,6 +1,6 @@
 {
   "name": "zaphycms-server",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Fastify server with GraphQL for Zaphy CMS",
   "main": "dist/index.js",
   "scripts": {
@@ -41,15 +41,15 @@
     "@babel/preset-env": "^7.9.6",
     "@graphql-toolkit/schema-merging": "^0.10.6",
     "core-js": "^3.6.5",
-    "zaphycms-adapter-github": "0.0.2",
-    "zaphycms-schema-definition": "0.0.2",
     "fastify": "^3.6.0",
     "fastify-axios": "^1.1.3",
     "fastify-cookie": "^4.1.0",
     "fastify-plugin": "^3.0.0",
     "graphql-tools": "^6.2.4",
     "mercurius": "^6.1.1",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "zaphycms-adapter-github": "0.0.2",
+    "zaphycms-schema-definition": "0.0.3"
   },
   "files": [
     "dist/"

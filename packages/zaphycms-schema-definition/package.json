@@ -1,6 +1,6 @@
 {
   "name": "zaphycms-schema-definition",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Creates GraphQL schema definition for Zaphy CMS",
   "main": "dist/index.js",
   "scripts": {

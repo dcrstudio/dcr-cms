@@ -19,6 +19,7 @@ const createServer = (config = {}) => {
     oauthScope,
     oauthClientSecret,
     oauthClientId,
+    oauthLogin,
     graphqlEndpointUrl = DEFAULT_GRAPHQL_ENDPOINT_URL,
     ...fastifyConfigs
   } = config
@@ -38,12 +39,12 @@ const createServer = (config = {}) => {
   fastify.after((err) => {
     if (err) {
       fastify.log.error(err)
-
+      
       throw err
     }
-
+    
     fastify.register(gitPlugin, { ownerSecret: gitOwnerSecret })
-
+    
     fastify.register(authPlugin, {
       authenticatedRoutes: [
         { route: fastify.config.oauth.login, allowLoginRedirect: true },
@@ -51,7 +52,7 @@ const createServer = (config = {}) => {
         { route: graphqlEndpointUrl, method: 'POST', preAuth: createPreAuthHandler(graphqlEndpointUrl) },
       ],
     })
-
+    
     fastify.register(routesPlugin, { oauthClientSecret })
 
     fastify.register(graphqlPlugin, {

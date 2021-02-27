@@ -15,7 +15,6 @@ const gitPlugin = async (fastify, opts, next) => {
 
   fastify.log.info(`Preparing repository: ${owner}/${repo}`)
 
-  // const gitAdapter = createGitAdapter({ secret: ownerSecret })
   const gitAdapter = createGitAdapter({ secret: ownerSecret })
 
   await gitAdapter

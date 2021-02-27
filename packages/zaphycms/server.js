@@ -10,6 +10,9 @@ dotenv.config({ path: `${process.env.DOTENV_PATH || '.'}/.env` })
 
 const PORT = process.env.PORT || 3000
 
+const enablePlayground = process.env.ENABLE_GRAPHQL_PLAYGROUND === undefined
+  || process.env.ENABLE_GRAPHQL_PLAYGROUND === 'true'
+
 const server = createServer({
   cookieSecret: process.env.COOKIE_SECRET,
   git: {
@@ -19,12 +22,19 @@ const server = createServer({
 
     visibility: process.env.GIT_REPO_VISIBILITY,
     defaultBranch: process.env.GIT_DEFAULT_BRANCH,
+    paths: {
+      root: process.env.GIT_ROOT_FOLDER,
+      contentTypes: process.env.GIT_CONTENT_TYPES_FOLDER,
+      content: process.env.GIT_CONTENT_FOLDER,
+    },
   },
   logger: true,
+  oatuhCallback: process.env.OAUTH_CALLBACK_URL,
   oauthClientId: process.env.GIT_OAUTH_CLIENT_ID,
   oauthClientSecret: process.env.GIT_OAUTH_CLIENT_SECRET,
   oauthScope: process.env.GIT_OAUTH_SCOPE?.split(','),
-  playground: process.env.GRAPHQL_PLAYGROUND,
+  oauthLogin: process.env.OAUTH_LOGIN_URL,
+  enablePlayground,
 })
 
 server.listen(PORT, (err) => {

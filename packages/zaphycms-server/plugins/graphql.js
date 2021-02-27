@@ -3,6 +3,8 @@ import mercurius from 'mercurius'
 
 import { createSchema } from '../graphql'
 
+const { ErrorWithProps: CustomGraphQLError } = mercurius
+
 const graphqlPlugin = async (fastify, opts, next) => {
   async function createZaphySchema() {
     fastify.log.info('Fecthing ContentTypes...')
@@ -37,6 +39,7 @@ const graphqlPlugin = async (fastify, opts, next) => {
         if (request.isAnonymousUser) return {}
 
         return ({
+          CustomGraphQLError,
           gitConfig: {
             branch: defaultBranch,
             owner,

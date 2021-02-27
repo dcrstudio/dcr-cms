@@ -4,7 +4,7 @@ import { CONTENT_TYPE_TYPE } from '../../constants/contentType'
 import { getContentTypePath } from '../../helpers/path'
 
 const formatFields = (fields) => {
-  if (!fields) return []
+  if (!fields?.length) []
 
   return fields.map(({ id, ...fieldProps }) => ({
     id: camelCase(id || fieldProps.name),
@@ -36,7 +36,7 @@ const createQueryResolver = ({ multi } = {}) => async (_, { id }, context) => {
 }
 
 const addResolver = async (_, { input }, context) => {
-  const { gitAdapter, gitConfig } = context
+  const { gitAdapter, gitConfig, CustomGraphQLError = Error } = context
   const { owner, repo, branch, paths } = gitConfig
   const {
     id: inputId,
@@ -48,9 +48,14 @@ const addResolver = async (_, { input }, context) => {
 
   const content = { id, ...contentType }
 
-  if (fields) {
-    content.fields = formatFields(fields)
+  if(!fields?.length) {
+    throw new CustomGraphQLError('ContentType must have at least 1 ContentTypeField', {
+      id,
+      code: 'CONTENT_TYPE_FIELDS_REQUIRED'
+    })
   }
+
+  content.fields = formatFields(fields)
 
   return gitAdapter.contentType.create({
     owner,
