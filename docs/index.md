@@ -1,4 +1,4 @@
-# Safis CMS
+# Zaphy CMS
 
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zaphytech/zaphycms/blob/master/LICENSE)
