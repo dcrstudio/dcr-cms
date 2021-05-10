@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zaphytech/zaphycms.git"
+    "url": "git+https://github.com/zaphylabs/zaphycms.git"
   },
   "keywords": [
     "zaphycms",
@@ -25,14 +25,14 @@
     "content management system"
   ],
   "author": {
-    "name": "Zaphy Tech",
-    "email": "zaphytech@gmail.com"
+    "name": "Zaphy",
+    "email": "team@zaphy.io"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zaphytech/zaphycms/issues"
+    "url": "https://github.com/zaphylabs/zaphycms/issues"
   },
-  "homepage": "https://github.com/zaphytech/zaphycms#readme",
+  "homepage": "https://github.com/zaphylabs/zaphycms#readme",
   "engines": {
     "node": ">=12.14.1",
     "npm": ">=6.13.4"
