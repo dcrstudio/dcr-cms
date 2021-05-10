@@ -131,21 +131,90 @@ And finally, the user will be redirected to the *return url* set in the url para
 The access token will be used to authorize future requests that will be made to the GitHub API in order to manage the user's content. This can also be used to access the GraphQL API.
 
 ## GraphQL API
-Initial base/basic types, queries and mutations.
-Types, queries and mutations are dinamically created based on content types.
+Zaphy CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
+
+### Default Schema
+
+This is the initial schema that will be available after the CMS was started for the first time:
+
+```graphql
+# indicates what kind of value a filed will take
+enum ContentTypeFieldTypeEnum {
+  String
+  Number
+  Boolean
+  Reference # links to other dynamic types that implement the ContentType type (coming soon)
+}
+
+# used to add a new field for a dynamic content type
+input ContentTypeFieldInput {
+  id: ID!
+  name: String!
+  description: String
+  type: ContentTypeFieldTypeEnum!
+}
+
+# used to add a new dynamic content type
+input ContentTypeInput {
+  id: ID
+  name: String!
+  description: String
+  fields: [ContentTypeFieldInput!]
+}
+
+# used to update an existing dynamic content type
+input ContentTypeUpdateInput {
+  id: ID!
+  name: String
+  description: String
+  fields: [ContentTypeFieldInput!]
+}
+
+# represents a field that belongs to a dynamic  content type
+type ContentTypeField {
+  id: ID!
+  name: String!
+  description: String
+  type: ContentTypeFieldTypeEnum!
+}
+
+# represents a content type, dynamic content types will implement this
+type ContentType {
+  id: ID!
+  name: String!
+  description: String
+  fields: [ContentTypeField!]!
+}
+
+type Query {
+  contentType(id: ID!): ContentType # given an id, returns a dynamic content type 
+  contentTypes: [ContentType] # return all dynamic content types available 
+}
+
+type Mutation {
+  addContentType(input: ContentTypeInput!): ContentType # adds a new dynamic content type
+  updateContentType(input: ContentTypeUpdateInput!): ContentType # updates an existing dynamic content type
+  deleteContentType(id: ID!): Boolean! # deletes an existing dynamic content type
+}
+```
+
+### Dynamic Content Types
+
+As soon as you create, update or delete content type, the GraphQL schema will be dynamically updated to reflect the change made by the user.
+
+<!-- 
 Required and dynamic/variable fields.
 
-(Create example content types and use them through the following sections)
+(Create example content types and use them through the following sections) -->
 
-### Types
 - ContentTypes
 - Content (entries)
 
-### Queries
+#### Queries for Dynamic Content Types
 - ContentTypes
 - Content based
 
-### Mutations (possibly talk about input types)
+#### Mutations for Dynamic Content Types(possibly talk about input types)
 - ContentTypes
 - Content based
 
