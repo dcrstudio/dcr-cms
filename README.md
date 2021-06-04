@@ -69,7 +69,7 @@ All of your content will be saved directly into your destination git repository.
 
 
 ## Contributing (coming soon...)
-New contributors are always welcome! Check out [CONTRIBUTING.md](/CONTRIBUTING.md) to get involved.
+New contributors are always welcome! Check out [CONTRIBUTING.md](/docs/CONTRIBUTING.md) to get involved.
 
 <!-- ## Change Log
 This project adheres to Semantic Versioning. Every release is documented on the Github Releases page. -->

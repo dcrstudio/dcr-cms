@@ -69,11 +69,11 @@ All of your content will be saved directly into your destination git repository.
 
 
 ## Contributing (coming soon...)
-New contributors are always welcome! Check out [CONTRIBUTING.md](../CONTRIBUTING.md) to get involved.
+New contributors are always welcome! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) to get involved.
 
 <!-- ## Change Log
 This project adheres to Semantic Versioning. Every release is documented on the Github Releases page. -->
 
 ## License
-Zaphy CMS is released under the [MIT License](../LICENSE).
+Zaphy CMS is released under the [MIT License](https://github.com/zaphylabs/zaphycms/blob/main/LICENSE).
 <!--  Please make sure you understand its implications and guarantees. -->
