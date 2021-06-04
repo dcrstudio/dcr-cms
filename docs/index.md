@@ -14,19 +14,19 @@ Zaphy CMS connects to a Git repository and manages its content through GraphQL o
 
 ## Features
 
-### [Content Modeling](/docs/content-modeling.md)
+### [Content Modeling](./content-modeling.md)
 Create custom content types for your application by defining their structure and adding validations for each individual field.
 
-- #### [Content types](/docs/content-modeling.md#content-types)
+- #### [Content types](./content-modeling.md#content-types)
 
-- #### [Content entries](/docs/content-modeling.md#content-entries)
+- #### [Content entries](./content-modeling.md#content-entries)
 
-- #### [File structure](/docs/content-modeling.md#file-structure)
+- #### [File structure](./content-modeling.md#file-structure)
 
-### [Authentication](/docs/authentication/md)
+### [Authentication](./authentication/md)
 Zaphy CMS uses GitHub OAuth Apps as default authenticatication and authorization method to use your repositories and manage your content.
 
-### [GraphQL API](/docs/graphql.md)
+### [GraphQL API](./graphql.md)
 Zaphy CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
 
 ### User friendly UI (coming soon...)
@@ -69,11 +69,11 @@ All of your content will be saved directly into your destination git repository.
 
 
 ## Contributing (coming soon...)
-New contributors are always welcome! Check out [CONTRIBUTING.md](/CONTRIBUTING.md) to get involved.
+New contributors are always welcome! Check out [CONTRIBUTING.md](../CONTRIBUTING.md) to get involved.
 
 <!-- ## Change Log
 This project adheres to Semantic Versioning. Every release is documented on the Github Releases page. -->
 
 ## License
-Zaphy CMS is released under the [MIT License](/LICENSE).
+Zaphy CMS is released under the [MIT License](../LICENSE).
 <!--  Please make sure you understand its implications and guarantees. -->

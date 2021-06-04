@@ -1,5 +1,5 @@
 
-# [Content Modeling](/docs/content-modeling.md)
+# Content Modeling
 Create custom content types for your application by defining their structure and adding validations for each individual field.
 
 ## Content types
