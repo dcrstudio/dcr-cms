@@ -1,39 +1,41 @@
 {
-  "name": "zaphycms-monorepo",
-  "description": "The Headless - Git Based Content Management System",
+  "name": "safis-cms-monorepo",
+  "description": "A headless, git-based and GraphQL native CMS",
   "scripts": {
+    "lerna-install": "npm install && lerna bootstrap",
     "bootstrap": "lerna bootstrap",
     "prebootstrap": "npm run build",
-    "build": "lerna run build --parallel --scope zaphycms-*",
+    "build": "lerna run build --parallel --ignore safis-cms",
     "clean": "lerna clean --yes",
-    "dev": "DOTENV_PATH=$PWD nodemon --exec 'npm run bootstrap && lerna run dev --scope zaphycms --stream'",
+    "dev": "DOTENV_PATH=$PWD nodemon --exec 'npm run bootstrap && lerna run dev --scope safis-cms --stream'",
     "lint": "eslint . --ignore-path .gitignore",
-    "start": "DOTENV_PATH=$PWD lerna run start --scope zaphycms --stream",
+    "start": "DOTENV_PATH=$PWD lerna run start --scope safis-cms --stream",
     "prestart": "npm run build",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "lerna": "npm run lerna"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zaphylabs/zaphycms.git"
+    "url": "git+https://github.com/safis-io/safis-cms.git"
   },
   "keywords": [
-    "zaphycms",
+    "safis-cms",
     "cms",
     "git based cms",
     "content management system"
   ],
   "author": {
-    "name": "Zaphy",
-    "email": "team@zaphy.io"
+    "name": "Safis",
+    "email": "team@safis.io"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zaphylabs/zaphycms/issues"
+    "url": "https://github.com/safis-io/safis-cms/issues"
   },
-  "homepage": "https://github.com/zaphylabs/zaphycms#readme",
+  "homepage": "https://github.com/safis-io/safis-cms#readme",
   "engines": {
-    "node": ">=12.14.1",
-    "npm": ">=6.13.4"
+    "node": ">=14.17.0",
+    "npm": ">=6.14.13"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.6",
