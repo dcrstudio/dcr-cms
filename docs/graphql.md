@@ -1,5 +1,5 @@
 # GraphQL API
-Zaphy CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
+Safis CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
 
 ## Default Schema
 

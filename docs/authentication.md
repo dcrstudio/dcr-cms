@@ -1,6 +1,6 @@
 # Authentication
 
-Zaphy CMS uses GitHub OAuth Apps as default authenticatication and authorization method to use your repositories and manage your content.
+Safis CMS uses GitHub OAuth Apps as default authenticatication and authorization method to use your repositories and manage your content.
 
 First of all, you will need a Github OAuth as detailed in the [requirements](#requirements) section. Once your or your organization's OAuth App is created, you need to set a value for each of the following environment variables (see the [configuration](#configuration-environment-variables) section for more info):
 - `GIT_OAUTH_CLIENT_ID`

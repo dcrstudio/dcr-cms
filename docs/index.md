@@ -1,14 +1,14 @@
-# Zaphy CMS
+# Safis CMS
 
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zaphytech/zaphycms/blob/master/LICENSE)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/safistech/safis-cms/blob/master/LICENSE)
 
 
 ### A headless, git-based and GraphQL native CMS.
 
 <br/>
 
-Zaphy CMS connects to a Git repository and manages its content through GraphQL or an intuitive and minimal UI (coming soon...).
+Safis CMS connects to a Git repository and manages its content through GraphQL or an intuitive and minimal UI (coming soon...).
 
 <br/>
 
@@ -24,10 +24,10 @@ Create custom content types for your application by defining their structure and
 - #### [File structure](./content-modeling.md#file-structure)
 
 ### [Authentication](./authentication/md)
-Zaphy CMS uses GitHub OAuth Apps as default authenticatication and authorization method to use your repositories and manage your content.
+Safis CMS uses GitHub OAuth Apps as default authenticatication and authorization method to use your repositories and manage your content.
 
 ### [GraphQL API](./graphql.md)
-Zaphy CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
+Safis CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
 
 ### User friendly UI (coming soon...)
 A web application designed for both content and development teams.
@@ -75,5 +75,5 @@ New contributors are always welcome! Check out [CONTRIBUTING.md](./CONTRIBUTING.
 This project adheres to Semantic Versioning. Every release is documented on the Github Releases page. -->
 
 ## License
-Zaphy CMS is released under the [MIT License](https://github.com/zaphylabs/zaphycms/blob/main/LICENSE).
+Safis CMS is released under the [MIT License](https://github.com/safis-io/safis-cms/blob/main/LICENSE).
 <!--  Please make sure you understand its implications and guarantees. -->
