@@ -23,7 +23,7 @@ Create custom content types for your application by defining their structure and
 
 - #### [File structure](./content-modeling.md#file-structure)
 
-### [Authentication](./authentication/md)
+### [Authentication](./authentication.md)
 Safis CMS uses GitHub OAuth Apps as default authenticatication and authorization method to use your repositories and manage your content.
 
 ### [GraphQL API](./graphql.md)
