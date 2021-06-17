@@ -1,6 +1,20 @@
 # GraphQL API
 Safis CMS includes a GraphQL API that will help you read, manage and deliver your content through a flexible schema that will be dynamically updated based on the existing content types.
 
+## Authorization
+**First of all**, the `access_token` needs to be sent through the ***Authorization*** header in order for a query or mutation to be authorized and correctly excecuted. Otherwise, an error will be returned.
+
+The `access_token` value can be found after you log in with your *[GitHub OAuth App](https://docs.github.com/en/developers/apps/creating-an-oauth-app)* (using the path set in the `OAUTH_LOGIN_URL` env variable) and authorize it. Once you authorized your App, you can find `access_token` value in your browser's cookies that:
+
+![image](https://user-images.githubusercontent.com/11320233/120562684-1cda3180-c3c4-11eb-9358-96e1a98a1738.png)
+
+
+## Playground
+The GraphQL Playground is enabled by default and it can be accessed through the `/playground` path. 
+
+![image](https://user-images.githubusercontent.com/11320233/120563332-8b6bbf00-c3c5-11eb-8174-13391aceb8c7.png)
+
+
 ## Default Schema
 
 This is the initial schema that will be available after the CMS was started for the first time:
@@ -940,17 +954,6 @@ mutation deleteContentEntry {
   }
 }
 ```
-
-## Playground
-The GraphQL Playground is enabled by default and it can be accessed through the `/playground` path. 
-
-After you log in and authorize the GitHub OAuth App, you can find an `access_token` in your browser cookies. This `access_token` will be required to excecute queries/mutations.
-
-![image](https://user-images.githubusercontent.com/11320233/120562684-1cda3180-c3c4-11eb-9358-96e1a98a1738.png)
-
-In order for a query/mutation to be authorized and correctly excecuted, the `access_token` is required to be sent in the ***Authorization*** header. Otherwise, an error will be returned.
-
-![image](https://user-images.githubusercontent.com/11320233/120563332-8b6bbf00-c3c5-11eb-8174-13391aceb8c7.png)
 
 ## Extending the Schema
 Ability to extend the GraphQL schema (Coming soon...)
