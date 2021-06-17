@@ -4,7 +4,7 @@ Safis CMS includes a GraphQL API that will help you read, manage and deliver you
 ## Authorization
 **First of all**, the `access_token` needs to be sent through the ***Authorization*** header in order for a query or mutation to be authorized and correctly excecuted. Otherwise, an error will be returned.
 
-The `access_token` value can be found after you log in with your *[GitHub OAuth App](https://docs.github.com/en/developers/apps/creating-an-oauth-app)* (using the path set in the `OAUTH_LOGIN_URL` env variable) and authorize it. Once you authorized your App, you can find `access_token` value in your browser's cookies that:
+The `access_token` value can be found after you log in with your *[GitHub OAuth App](https://docs.github.com/en/developers/apps/creating-an-oauth-app)* (using the path set in the `OAUTH_LOGIN_URL` env variable) and authorize it. Once you authorized your App, you can find `access_token` value in your browser's cookies:
 
 ![image](https://user-images.githubusercontent.com/11320233/120562684-1cda3180-c3c4-11eb-9358-96e1a98a1738.png)
 
@@ -25,10 +25,10 @@ enum ContentTypeFieldTypeEnum {
   String
   Number
   Boolean
-  Reference # links to other dynamic types that implement the ContentType type (coming soon)
+  Reference # links to other content types that implement the ContentType type (coming soon)
 }
 
-# used to add a new field for a dynamic content type
+# used to add a new field for a content type
 input ContentTypeFieldInput {
   id: ID!
   name: String!
@@ -36,7 +36,7 @@ input ContentTypeFieldInput {
   type: ContentTypeFieldTypeEnum!
 }
 
-# used to add a new dynamic content type
+# used to add a new content type
 input ContentTypeInput {
   id: ID
   name: String!
@@ -44,7 +44,7 @@ input ContentTypeInput {
   fields: [ContentTypeFieldInput!]
 }
 
-# used to update an existing dynamic content type
+# used to update an existing content type
 input ContentTypeUpdateInput {
   id: ID!
   name: String
@@ -52,7 +52,7 @@ input ContentTypeUpdateInput {
   fields: [ContentTypeFieldInput!]
 }
 
-# represents a field that belongs to a dynamic  content type
+# represents a field that belongs to a content type
 type ContentTypeField {
   id: ID!
   name: String!
@@ -60,7 +60,7 @@ type ContentTypeField {
   type: ContentTypeFieldTypeEnum!
 }
 
-# represents a content type, dynamic content types will implement this
+# represents a content type, content types will implement this
 type ContentType {
   id: ID!
   name: String!
@@ -69,26 +69,26 @@ type ContentType {
 }
 
 type Query {
-  contentType(id: ID!): ContentType # given an id, returns a dynamic content type 
-  contentTypes: [ContentType] # return all dynamic content types available 
+  contentType(id: ID!): ContentType # given an id, returns a content type 
+  contentTypes: [ContentType] # return all content types available 
 }
 
 type Mutation {
-  addContentType(input: ContentTypeInput!): ContentType # adds a new dynamic content type
-  updateContentType(input: ContentTypeUpdateInput!): ContentType # updates an existing dynamic content type
-  deleteContentType(id: ID!): Boolean! # deletes an existing dynamic content type
+  addContentType(input: ContentTypeInput!): ContentType # adds a new content type
+  updateContentType(input: ContentTypeUpdateInput!): ContentType # updates an existing content type
+  deleteContentType(id: ID!): Boolean! # deletes an existing content type
 }
 ```
 
-## Dynamic Content Types
+## Content Types
 
-A user can add new content types based on the structure described when using the **addContetType** mutation, these content types can be called ***dynamic*** content types since they will be automatically added to the Schema after they were successfully created.
+A user can add new content types based on the structure described when using the **addContetType** mutation, these content types are considered ***dynamic*** since they will be automatically added to the schema after they were successfully created.
 
 ## Managing Content Types
 
 Let's create a new `User` content type that will represent users for our awesome application, update it and see how these changes affect the schema.
 
-Before we start making any change, let's take a look of the current (*dynamic*) content types that are available by using the **contentTypes** query:
+Before we start making any change, let's take a look at the available content types by using the **contentTypes** query:
 
 ```graphql
 query getAllContentTypes {
@@ -152,7 +152,7 @@ mutation addUserContentType {
       description
       type
     }
-    __typename # this will be ContentType by default since all dynamic content types implement the ContentType type
+    __typename
   }
 }
 ```
@@ -667,7 +667,7 @@ mutation updateUserContentTypeFields {
 }
 ```
 
-### Deleting a dynamic  content type
+### Deleting a content type
 Let's assume we have a `Test` content type, whose id is `test`. We can delete this content type by using the **deleteContentType** mutation.
 
 ```graphql
