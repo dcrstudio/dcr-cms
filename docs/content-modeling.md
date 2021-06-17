@@ -4,19 +4,19 @@ Create custom content types for your application by defining their structure and
 
 ## Content types
 
-| Field       | Description | Default | Required|
+| Field       | Description | Default value | Required|
 | ----------- | ----------- | -----   | ----    |
 | `id` | Identifier of the content type. If a value is provided, it will always be formatted to camel case format. | It will take the value provided for the `name` but camel case format. e.g. Page = `page`. | false
 | `name`   | What the Admin will display as the Name of the content type | | true
 | `description`   | The description for the content type | empty | false
-| `fields`   | Array of objects that will define each field available in the content type. e.g. <br/> `{ id: "age", name: "Age", description: "This is the user's age", type: "Number" }` </br> Please see the **Field Definition** table below for more information. | | true
+| `fields`   | Array of objects that will define each field available in the content type. e.g. <br/> `{ id: "age", name: "Age", description: "This is the user's age", type: "Number" }`. Please see the [**Field Definition**](#field-definition) table below for more information. | | true
 
 <br/>
-<br/>
 
-**Field definition**
-| Field      | Description | Default | Required|
-| ----------- | ----------- | ----- | ---- |
+### Field definition
+
+| Field      | Description | Default value | Required|
+| ---------- | ----------- | ------- | ------- |
 | `id` | Identifier of the field contained in the content type. It will be formatted to camel case. | | true
 | `name`   | The label to be displayed in the Admin for the field | | true
 | `description`   | Optional description for the field content type | empty | false
@@ -26,12 +26,12 @@ Create custom content types for your application by defining their structure and
 <br/>
 
 ## Content entries
-Once you defined your application content types, **add as many content entries as you need**.
+A content entry can be considered an instance of a content type and you can **add as many content entries as you need**.
 
 <br/>
 
 ## File structure
-Content in the destination git Repository will follow this structure.
+Content in the destination git Repository will initially follow the structure proposed below. This structure also be overriden using the `GIT_CONTENT_TYPES_FOLDER` and `GIT_CONTENT_FOLDER` environment variables.
 
 
     . # default root folder
