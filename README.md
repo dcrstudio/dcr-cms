@@ -5,7 +5,7 @@
 
 ### A headless, git-based and GraphQL native CMS.
 
-Safis CMS connects to a Git repository and manages its content through GraphQL or an intuitive and minimal UI (coming soon...).
+Safis CMS connects to a Git repository and manages its content using GraphQL and a user friendly UI (coming soon...).
 
 ## Features
 
@@ -33,39 +33,22 @@ All of your content will be saved directly into your destination git repository.
 ## Getting Started
 
 ### Requirements
+In order for you to use Safis CMS packages you will need to meet the following requirements:
 
-1. The **owner** of the repository needs to create a GitHub **[personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)** and select the `repo` scope.
+1. A GitHub **[personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)** that has the `repo` scope selected.
 
-2. Create a **[GitHub OAuth App](https://docs.github.com/en/developers/apps/creating-an-oauth-app)**.
-  Then set your "*Authorization callback URL*", this should be a combination of your domain and the value set for `OAUTH_CALLBACK_URL` env variable. e.g. `http://localhost:3000/oauth/callback`. We will use this app and will need to use its `Client ID` and `Client secret` to authenticate to GitHub.
+2. A GitHub **[OAuth App](https://docs.github.com/en/developers/apps/creating-an-oauth-app)** so you can provide its `Client ID` and `Client secret` in order to authenticate to GitHub and perform git operations on your behalf.
+
+> To see the full list of requirements please visit our [requirements](/CONTRIBUTING.md#requirements) section.
 
 ### Configuration
-We will use environment variables in this example to configure our `safis-cms-server`. So we will need a `.env` file with the following configuration:
+We will use environment variables in this example to configure our `safis-cms-server`.
 
-```bash
-# Required
-COOKIE_SECRET=my-cookie-secret
-GIT_OWNER=username-here
-GIT_OWNER_SECRET=secret-value # GitHub personal access token
-GIT_REPO=repo-name
-GIT_OAUTH_CLIENT_ID=oauth-app-client-id
-GIT_OAUTH_CLIENT_SECRET=oauth-app-client-secret
-
-# Optional
-GIT_DEFAULT_BRANCH # default: main
-GIT_OAUTH_SCOPE # comma separated value. e.g. scope1,scope2. Default: repo, the scope for your OAuth App
-GIT_REPO_VISIBILITY # default: public
-GIT_ROOT_FOLDER=custom-root-folder
-GIT_CONTENT_TYPES_FOLDER # default: contentTypes
-GIT_CONTENT_FOLDER # default: content
-OAUTH_LOGIN_URL # default: /oauth/login
-OAUTH_CALLBACK_URL # default: /oauth/callback
-ENABLE_GRAPHQL_PLAYGROUND # default: true
-```
+> Please see our [configuration](/CONTRIBUTING.md#configuration) section to know more about how to configure you local environment.
 
 ### Installation
-```bash
-npm install safis-cms-server
+```sh
+$ npm install safis-cms-server
 ```
 
 > For this example, we will also be using the [`dotenv`](https://github.com/motdotla/dotenv) npm package.
@@ -122,12 +105,14 @@ server.listen(PORT, (err) => {
 
 You can additionally add a client to your server so you can manage your content through a more user friendly interface. ***Coming soon...***
 
-## Contributing (coming soon...)
-New contributors are always welcome! Check out [CONTRIBUTING.md](/docs/CONTRIBUTING.md) to get involved.
+## How is the repo structured?
+This repository is a [monorepo](https://trunkbaseddevelopment.com/monorepos/) managed using [Lerna](https://github.com/lerna/lerna). This means there are [multiple packages](https://github.com/safis-io/safis-cms/tree/main/packages) managed in this codebase, even though we publish them to NPM as separate packages.
+
+## Contributing
+New contributors are always welcome! Check out our [Contributing Guide](/CONTRIBUTING.md) to get involved.
 
 <!-- ## Change Log
 This project adheres to Semantic Versioning. Every release is documented on the Github Releases page. -->
 
 ## License
-Safis CMS is released under the [MIT License](/LICENSE).
-<!--  Please make sure you understand its implications and guarantees. -->
+Safis CMS is released under the [MIT License](https://github.com/safis-io/safis-cms/blob/main/LICENSE).
