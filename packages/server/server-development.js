@@ -4,7 +4,7 @@ require('core-js/stable')
 require('regenerator-runtime/runtime')
 
 import dotenv from 'dotenv'
-import { createServer } from 'safis-cms-server'
+import { createServer } from '.'
 
 dotenv.config({ path: `${process.env.DOTENV_PATH || '.'}/.env` })
 

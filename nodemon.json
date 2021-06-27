@@ -2,8 +2,9 @@
   "delay": 2500,
   "ext": "js,json",
   "ignore": [
+    "packages/app/",
     "packages/*/dist/",
-    "packages/*/package*.json*"
+    "packages/*/package*.json"
   ],
   "watch": [
     "packages"

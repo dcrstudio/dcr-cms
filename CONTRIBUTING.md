@@ -24,7 +24,7 @@ This repository is a [monorepo](https://trunkbaseddevelopment.com/monorepos/) ma
 
 [Fork](https://guides.github.com/activities/forking/) the `safis-cms` repository to your GitHub Account.
 
-#### Cloning your `safi-cms` repo
+#### Cloning your `safis-cms` repo
 ```sh
 $ git clone https://github.com/<your-github-username>/safis-cms
 
@@ -65,20 +65,11 @@ ENABLE_GRAPHQL_PLAYGROUND # default: true
 
 #### Getting your local instance of safis-cms up and running
 
-You can either run
+You can start `safis-cms-server` and `safis-cms-app` (coming soon...) in development mode by running:
 
 ```sh
-$ npm dev 
+$ npm run dev 
 ```
-
-> Starts safis-cms in development and watch mode.
-
-or
-
-```sh
-$ npm start
-```
-> Starts safis-cms in production mode.
 
 #### Running tests
 Coming soon..
